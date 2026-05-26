@@ -1,36 +1,32 @@
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class YatzyTest {
 
     @Test
-    fun chance_scores_sum_of_all_dice() {
-        val expected = 15
-        val actual = Yatzy.chance(2, 3, 4, 5, 1)
-        assertEquals(expected, actual)
+    fun `chance scores sum of all dice`() {
+        assertEquals(15, Yatzy.chance(2, 3, 4, 5, 1))
         assertEquals(16, Yatzy.chance(3, 3, 4, 5, 1))
     }
 
+
     @Test
-    fun yatzy_scores_50() {
-        val expected = 50
-        val actual = Yatzy.yatzy(4, 4, 4, 4, 4)
-        assertEquals(expected, actual)
+    fun `yatzy scores 50`() {
+        assertEquals(50, Yatzy.yatzy(4, 4, 4, 4, 4))
         assertEquals(50, Yatzy.yatzy(6, 6, 6, 6, 6))
         assertEquals(0, Yatzy.yatzy(6, 6, 6, 6, 3))
     }
 
     @Test
-    fun test_1s() {
-        assertTrue(Yatzy.ones(1, 2, 3, 4, 5) === 1)
+    fun test_ones() {
+        assertEquals(1,Yatzy.ones(1, 2, 3, 4, 5) )
         assertEquals(2, Yatzy.ones(1, 2, 1, 4, 5))
         assertEquals(0, Yatzy.ones(6, 2, 2, 4, 5))
         assertEquals(4, Yatzy.ones(1, 2, 1, 1, 1))
     }
 
     @Test
-    fun test_2s() {
+    fun test_twos() {
         assertEquals(4, Yatzy.twos(1, 2, 3, 2, 6))
         assertEquals(10, Yatzy.twos(2, 2, 2, 2, 2))
     }
@@ -42,21 +38,21 @@ class YatzyTest {
     }
 
     @Test
-    fun fours_test() {
+    fun test_fours() {
         assertEquals(12, Yatzy(4, 4, 4, 5, 5).fours())
         assertEquals(8, Yatzy(4, 4, 5, 5, 5).fours())
         assertEquals(4, Yatzy(4, 5, 5, 5, 5).fours())
     }
 
     @Test
-    fun fives() {
+    fun test_fives() {
         assertEquals(10, Yatzy(4, 4, 4, 5, 5).fives())
         assertEquals(15, Yatzy(4, 4, 5, 5, 5).fives())
         assertEquals(20, Yatzy(4, 5, 5, 5, 5).fives())
     }
 
     @Test
-    fun sixes_test() {
+    fun test_sixes() {
         assertEquals(0, Yatzy(4, 4, 4, 5, 5).sixes())
         assertEquals(6, Yatzy(4, 4, 6, 5, 5).sixes())
         assertEquals(18, Yatzy(6, 5, 6, 6, 5).sixes())
@@ -87,7 +83,7 @@ class YatzyTest {
     }
 
     @Test
-    fun four_of_a_knd() {
+    fun four_of_a_kind() {
         assertEquals(12, Yatzy.fourOfAKind(3, 3, 3, 3, 5))
         assertEquals(20, Yatzy.fourOfAKind(5, 5, 5, 4, 5))
         assertEquals(12, Yatzy.fourOfAKind(3, 3, 3, 3, 3))
